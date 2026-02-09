@@ -31,7 +31,7 @@
       --shadow: 0 20px 80px rgba(0,0,0,.55);
 
       /* ✅ Card-only background image (edit these) */
-      --cardBgImage: url("./assets/bg.jpg"); /* swap to your image path */
+      --cardBgImage: url("./assets/backgrounds/background1.webp"); /* swap to your image path */
       --cardBgOpacity: .14; /* 0.00 invisible → 1.00 strong */
       --cardBgBlur: 0px;    /* optional blur */
       --cardBgScale: 1.05;  /* slight zoom looks nicer in glass */
@@ -157,7 +157,8 @@
       position:relative;
       border-radius:999px;
       isolation:isolate;
-    }
+      z-index: 1;
+}
     .logoRing::before{
       content:"";
       position:absolute;
@@ -181,7 +182,9 @@
               mask: radial-gradient(circle, transparent calc(50% - var(--ringThickness)), #000 calc(50% - var(--ringThickness) + 1px));
       animation: spin 4.2s linear infinite;
       opacity:.95;
-    }
+      z-index: 3; /* ring above logo */
+      pointer-events: none;
+}
     .logoRing::after{
       content:"";
       position:absolute;
@@ -200,7 +203,7 @@
     .logo{
       width: 128px;
       height: 128px;
-      border-radius: 30px;
+      border-radius: 999px;
       background: rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.16);
       display:grid;
@@ -208,13 +211,15 @@
       box-shadow: 0 12px 40px rgba(0,0,0,.45);
       overflow:hidden;
       position:relative;
-    }
+      z-index: 2; /* logo below ring */
+}
     .logo img{
       width:100%;
       height:100%;
       object-fit:cover;
       display:block;
-    }
+      border-radius: 999px;
+}
     .logo::after{
       content:"";
       position:absolute;
@@ -556,10 +561,18 @@
 
     const rand = (a,b)=> a + Math.random()*(b-a);
     const colors = [
-      [124,58,237],
-      [34,211,238],
-      [167,139,250],
-      [57,255,20]
+      [124,58,237],   // violet
+      [34,211,238],   // cyan
+      [167,139,250],  // lilac
+      [57,255,20],    // neon green
+      [0,160,255],    // bright blue
+      [0,120,255],    // deep blue
+      [0,220,160],    // teal green
+      [20,200,80],    // green
+      [255,80,80],    // red
+      [255,140,60],   // orange
+      [255,210,70],   // yellow
+      [255,105,180]   // pink
     ];
 
     const dots = Array.from({length: 72}, () => {
