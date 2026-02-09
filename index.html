@@ -18,6 +18,12 @@
       --neonC:#a78bfa;   /* lilac */
       --neonG:#39ff14;   /* neon green */
 
+      /* 🥇 Gold palette for social icons */
+      --gold1:#ffd36a;
+      --gold2:#ffb703;
+      --gold3:#f5c86b;
+      --goldGlow:rgba(255,200,80,.55);
+
       --ringSize: 210px;
       --ringThickness: 10px;
 
@@ -247,33 +253,63 @@
       flex-wrap:wrap;
       justify-content:center;
     }
-    .socials a{
+        .socials a{
       width:42px;
       height:42px;
       display:grid;
       place-items:center;
       border-radius:999px;
       text-decoration:none;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.12);
-      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+
+      /* 🥇 gold glass base */
+      background: radial-gradient(
+        circle at 30% 30%,
+        var(--gold1),
+        var(--gold2) 45%,
+        #b8892e 70%,
+        #6f4e12 100%
+      );
+
+      border:1px solid rgba(255,215,120,.55);
+      box-shadow:
+        0 12px 30px rgba(0,0,0,.35),
+        0 0 26px var(--goldGlow);
+
       position:relative;
       overflow:hidden;
-      transition: transform .15s ease, border-color .15s ease;
+      transition: transform .15s ease, box-shadow .15s ease;
     }
-    .socials a::before{
+
+        .socials a::before{
       content:"";
       position:absolute;
-      inset:-2px;
+      inset:-3px;
       border-radius:999px;
-      background: conic-gradient(from 0deg, rgba(34,211,238,0), rgba(34,211,238,.55), rgba(124,58,237,.55), rgba(167,139,250,.55), rgba(34,211,238,0));
-      opacity:.35;
-      animation: spin 4.2s linear infinite;
+
+      /* 🥇 spinning gold tracer */
+      background: conic-gradient(
+        from 0deg,
+        rgba(255,215,120,0) 0deg,
+        rgba(255,215,120,.95) 40deg,
+        rgba(255,180,40,.85) 90deg,
+        rgba(255,215,120,.95) 140deg,
+        rgba(255,215,120,0) 200deg,
+        rgba(255,215,120,0) 260deg,
+        rgba(255,180,40,.90) 300deg,
+        rgba(255,215,120,0) 360deg
+      );
+
+      opacity:.78;
+      animation: spin 4.0s linear infinite;
     }
-    .socials a:hover{
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,.22);
+
+        .socials a:hover{
+      transform: translateY(-2px);
+      box-shadow:
+        0 14px 36px rgba(0,0,0,.55),
+        0 0 36px rgba(255,215,120,.90);
     }
+
     .socials svg{
       width:20px;
       height:20px;
@@ -459,6 +495,11 @@
           <a href="#" target="_blank" rel="noopener" aria-label="X (Twitter)">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M18.9 2H22l-6.8 7.8L23 22h-6.6l-5.1-6.4L5.6 22H2.5l7.3-8.4L1 2h6.8l4.6 5.7L18.9 2zm-1.1 18h1.8L6.1 3.8H4.2L17.8 20z"/>
+            </svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.6c0-2.4 1.4-3.7 3.6-3.7 1 0 2 .2 2 .2v2.3h-1.1c-1.1 0-1.4.7-1.4 1.4V12h2.4l-.4 3h-2v7A10 10 0 0 0 22 12z"/>
             </svg>
           </a>
         </div>
