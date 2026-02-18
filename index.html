@@ -400,6 +400,44 @@
     .traceBtn:hover::before{ opacity:.95; }
     .traceBtn:hover::after{ opacity:.55; }
     .traceBtn:active{ transform: translateY(0px) scale(.99); }
+/* Media Featured Button (Red Variant) */
+.featuredMedia{
+  background: linear-gradient(180deg, rgba(239,68,68,.22), rgba(239,68,68,.10));
+  border:1px solid rgba(239,68,68,.45);
+  box-shadow: 0 14px 36px rgba(239,68,68,.35);
+}
+
+.featuredMedia::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:14px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(239,68,68,0) 0deg,
+    rgba(239,68,68,.85) 35deg,
+    rgba(248,113,113,.95) 70deg,
+    rgba(220,38,38,.85) 115deg,
+    rgba(239,68,68,0) 160deg,
+    rgba(239,68,68,0) 240deg,
+    rgba(220,38,38,.85) 270deg,
+    rgba(248,113,113,.95) 320deg,
+    rgba(239,68,68,0) 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  padding: 2px;
+  animation: spin 3.4s linear infinite;
+  opacity:.75;
+}
+
+.featuredMedia:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 18px 48px rgba(239,68,68,.55);
+}
 
     /* Featured Labs button (neon green) */
     .traceBtn.featured{
@@ -454,6 +492,69 @@
     }
     footer a{ color: rgba(255,255,255,.78); text-decoration:none; }
     footer a:hover{ text-decoration:underline; }
+/* Footer contact icon (bottom-right, does NOT change card size) */
+.footerContact{
+  position:absolute;
+  right:14px;
+  bottom:12px;
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  text-decoration:none;
+
+  background: linear-gradient(180deg, rgba(124,58,237,.22), rgba(124,58,237,.10));
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow: 0 14px 36px rgba(0,0,0,.45);
+  overflow:hidden;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.footerContact::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:999px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(34,211,238,0) 0deg,
+    rgba(34,211,238,.85) 35deg,
+    rgba(167,139,250,.95) 70deg,
+    rgba(124,58,237,.85) 115deg,
+    rgba(34,211,238,0) 160deg,
+    rgba(34,211,238,0) 240deg,
+    rgba(124,58,237,.85) 270deg,
+    rgba(167,139,250,.95) 320deg,
+    rgba(34,211,238,0) 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  padding: 2px;
+  animation: spin 3.4s linear infinite;
+  opacity:.70;
+}
+
+.footerContact svg{
+  width:20px;
+  height:20px;
+  fill: rgba(255,255,255,.92);
+  position:relative;
+  z-index:1;
+}
+
+.footerContact:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.24);
+  box-shadow: 0 16px 44px rgba(0,0,0,.60);
+}
+
+.footerContact:active{
+  transform: translateY(0px) scale(.98);
+}
 
     @media (max-width: 380px){
       :root{ --ringSize: 190px; }
@@ -516,28 +617,37 @@
       </header>
 
       <nav class="links" aria-label="Links">
-        <a class="traceBtn featured" href="https://elevaistrategies.github.io/labs/" target="_blank" rel="noopener">
-          <span>Enter ElevAI Labs 🧪⚡</span>
-          <span class="sparkle">✨</span>
-        </a>
+  <a class="traceBtn featured" href="https://elevaistrategies.github.io/labs/" target="_blank" rel="noopener">
+    <span>Enter ElevAI Labs 🧪⚡</span>
+    <span class="sparkle">✨</span>
+  </a>
 
-        <a class="traceBtn" href="https://www.upwork.com/agencies/1987347047826774027/" target="_blank" rel="noopener">
-          <span>Hire Me for a Project 🧰💼</span>
-        </a>
+ <a class="traceBtn featuredMedia" href="https://media.elevaistrategies.com" target="_blank" rel="noopener">
+  <span>Enter ElevAI Media 🎬🌌⚡</span>
+  <span class="sparkle">🔥</span>
+</a>
 
-        <a class="traceBtn" href="https://labs.elevaistrategies.com/submit/" target="_blank" rel="noopener">
-          <span>Submit an App Idea 💡</span>
-        </a>
+  <a class="traceBtn" href="https://www.upwork.com/agencies/1987347047826774027/" target="_blank" rel="noopener">
+    <span>Hire Me for a Project 🧰💼</span>
+  </a>
 
-        <a class="traceBtn" href="#" target="_blank" rel="noopener">
-          <span>Contact 📬🛰️</span>
-        </a>
-      </nav>
+  <a class="traceBtn" href="https://labs.elevaistrategies.com/submit/" target="_blank" rel="noopener">
+    <span>Submit an App Idea 💡</span>
+  </a>
+</nav>
 
       <footer>
-        © <span id="year"></span> ElevAI Strategies ⚙️ ·
-        <a href="https://elevaistrategies.github.io/labs/" target="_blank" rel="noopener">Labs 🧪</a>
-      </footer>
+  © <span id="year"></span> ElevAI Strategies ⚙️ ·
+  <a href="https://elevaistrategies.github.io/labs/" target="_blank" rel="noopener">Labs 🧪</a>
+
+  <!-- Contact icon (swap href later) -->
+  <a class="footerContact" href="#" target="_blank" rel="noopener" aria-label="Contact">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/>
+    </svg>
+  </a>
+</footer>
+
     </section>
   </main>
 
